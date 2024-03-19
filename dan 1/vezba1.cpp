@@ -5,7 +5,13 @@ struct Node {
 	Node(int e, Node* n) : elem(e), next(n) {}
 	int elem = 0;
 	Node* next = nullptr;
+	// you need to implement begin and end functions
+	// both functions returns iterator
+	NodeIterator begin() noexcept { return NodeIterator(); }
+	NodeIterator end() noexcept { return NodeIterator(nullptr);}
 };
+
+// NodeIterator begin(Node* n) noexcept{ return NodeIterator(n);}
 
 void add(Node& n, int x) {
 	n.next = new Node(x, n.next);
@@ -15,6 +21,16 @@ struct NodeIterator {
 	NodeIterator() {};
 	NodeIterator(Node* x) : p(x) {}
 	Node* p = nullptr;
+	// you need to implement operations
+	// == ( and !=)
+	bool operator==(const NodeIterator& n){ return this->p==n.p;}
+	bool operator!=(const NodeIterator& n){ return this->p!=n.p;}
+	// *
+	int operator*(){return this->p->elem;}
+	// ++
+	void operator++(){ this->p=this->p->next;}
+
+
 };
 
 
