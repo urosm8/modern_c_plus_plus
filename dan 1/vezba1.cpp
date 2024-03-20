@@ -1,6 +1,6 @@
 #include <iostream>
 
-using NodeIterator= struct NodeIterator;
+using NodeIterator = struct NodeIterator;
 using Node = struct Node;
 
 struct Node
@@ -18,7 +18,6 @@ void add(Node &n, int x)
 	n.next = new Node(x, n.next);
 }
 
-
 struct NodeIterator
 {
 	NodeIterator(){};
@@ -28,21 +27,17 @@ struct NodeIterator
 	bool operator==(const NodeIterator &n) const { return this->p == n.p; }
 	bool operator!=(const NodeIterator &n) const { return this->p != n.p; }
 
-	int operator*() {return p->elem;}
+	int &operator*() { return p->elem; }
 
-	int const &operator*() const { return p->elem; }
 	NodeIterator &operator++()
 	{
 		this->p = this->p->next;
 		return *this;
 	}
-
 };
 
-
-NodeIterator Node::begin(){ return NodeIterator(this);}
-NodeIterator Node::end(){ return NodeIterator();}
-
+NodeIterator Node::begin() { return NodeIterator(this); }
+NodeIterator Node::end() { return NodeIterator(); }
 
 int main()
 {
@@ -64,16 +59,15 @@ int main()
 		std::cout << x << " ";
 	}
 	std::cout << std::endl;
-	// for (int &x : head)
-	// {
-	// 	x = 7;
-	// }
+	for (int &x : head)
+	{
+		x = 7;
+	}
 	for (const int &x : head)
 	{
 		std::cout << x << " ";
 	}
 	std::cout << std::endl;
-
 
 	return 0;
 }
