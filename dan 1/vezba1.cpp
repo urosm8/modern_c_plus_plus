@@ -28,6 +28,7 @@ struct NodeIterator
 	bool operator!=(const NodeIterator &n) const { return this->p != n.p; }
 
 	int &operator*() { return p->elem; }
+	const int& operator*() const { return p->elem; }
 
 	NodeIterator &operator++()
 	{
@@ -36,7 +37,7 @@ struct NodeIterator
 	}
 };
 
-NodeIterator Node::begin() { return NodeIterator(this); }
+NodeIterator Node::begin() { return NodeIterator(this->next); }
 NodeIterator Node::end() { return NodeIterator(); }
 
 int main()
