@@ -1,6 +1,4 @@
 ﻿#include <iostream>
-#include<cassert>
-constexpr int LIMIT = INT32_MAX;
 // Овде написати следећу функцију:
 constexpr int fibo(int n){ // OPTIMALNIJA IMPLEMENTACIJE JE PREKO MATRICNOG MNOZENJA
 	if(n==0)return 0; // ILI PREKO SPECIJALNIH FORMULA
