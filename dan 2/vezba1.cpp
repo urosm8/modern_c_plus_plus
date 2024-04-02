@@ -28,10 +28,36 @@ MyBigInt operator+(const MyBigInt& lhs, const MyBigInt& rhs)
 	return ret;
 }
 
-
 // Овде написати следећу функцију:
-// MyBigInt fibo(int n);
+MyBigInt fibo(int n){
+	if(n==0) return MyBigInt(0);
+	if(n==1) return MyBigInt(1);
 
+	MyBigInt f0{0},f1{1};
+
+	for (int i = 2; i <= n; i++)
+	{
+		MyBigInt temp = f1;
+		f1= f1 + f0;
+		f0= std::move(temp);
+		
+	}
+
+	return f1;
+	
+}
+
+MyBigInt operator""_mbi(const char * str){
+	MyBigInt mbi;
+	mbi.size=std::strlen(str);
+	mbi.digits = new int_least8_t[mbi.size];
+	for (auto i = 0; i < mbi.size; i++)
+	{
+		mbi.digits[i]= static_cast<int_least8_t>(int(str[mbi.size-1-i]-'0'));
+	}
+	
+	return std::move(mbi);
+}
 
 int main()
 {
@@ -42,8 +68,6 @@ int main()
 	k = k + 5;
 	std::cout << k << std::endl;
 	k = 7 + fibo(11);
-	std::cout << k << std::endl;
-	k = 13_mbi;
 	std::cout << k << std::endl;
 	MyBigInt l = fibo(300);
 	if (l != 222232244629420445529739893461909967206666939096499764990979600_mbi) {
