@@ -1,7 +1,6 @@
 #include <iostream>
 #include <thread>
 #include <mutex>
-#include <vector>
 
 int i1 = 0, i2 = 0;
 std::mutex m1, m2;
