@@ -30,8 +30,9 @@ MyBigInt operator+(const MyBigInt& lhs, const MyBigInt& rhs)
 
 // Овде написати следећу функцију:
 MyBigInt fibo(int n){
-	if(n==0) return MyBigInt(0);
-	if(n==1) return MyBigInt(1);
+	if(n==0) return std::move(MyBigInt(0));
+	if(n==1) return std::move(MyBigInt(1));
+
 
 	MyBigInt f0{0},f1{1};
 
@@ -43,7 +44,7 @@ MyBigInt fibo(int n){
 		
 	}
 
-	return f1;
+	return std::move(f1);
 	
 }
 
